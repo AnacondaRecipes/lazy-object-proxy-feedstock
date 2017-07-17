@@ -17,10 +17,12 @@ build:
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
-  build:
-    - toolchain
+  host:
     - python
     - setuptools
+
+  build:
+    - {{ compiler('c') }}
 
   run:
     - python
