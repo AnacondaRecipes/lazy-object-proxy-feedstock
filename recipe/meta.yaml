@@ -11,7 +11,7 @@ source:
 build:
   number: 0
   skip: true  # [py<38]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   build:
@@ -19,6 +19,7 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
+    - wheel
     - pip
     - setuptools_scm >=8.0.0
   run:
@@ -38,9 +39,11 @@ about:
   home: https://github.com/ionelmc/python-lazy-object-proxy
   license: BSD-2-Clause
   license_file: LICENSE
+  license_family: BSD
   summary: A fast and thorough lazy object proxy
+  description: |
+    A fast and thorough lazy object proxy
   doc_url: https://python-lazy-object-proxy.readthedocs.org
-  doc_source_url: https://github.com/ionelmc/python-lazy-object-proxy/blob/master/docs/index.rst
   dev_url: https://github.com/ionelmc/python-lazy-object-proxy
 
 extra:
