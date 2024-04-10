@@ -1,4 +1,4 @@
-{% set version = "1.6.0" %}
+{% set version = "1.10.0" %}
 
 package:
   name: lazy-object-proxy
@@ -6,10 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/lazy-object-proxy/lazy-object-proxy-{{ version }}.tar.gz
-  sha256: 489000d368377571c6f982fba6497f2aa13c6d1facc40660963da62f5c379726
+  sha256: 78247b6d45f43a52ef35c25b5581459e85117225408a4128a3daf8bf9648ac69
 
 build:
   number: 0
+  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -19,7 +20,7 @@ requirements:
   host:
     - python
     - pip
-    - setuptools_scm >=3.3.1
+    - setuptools_scm >=8.0.0
   run:
     - python
 
@@ -27,6 +28,11 @@ test:
   imports:
     - lazy_object_proxy
     - lazy_object_proxy.cext  # [python_impl != "pypy"]
+  requires:
+    - pip
+  commands:
+    - pip check
+
 
 about:
   home: https://github.com/ionelmc/python-lazy-object-proxy
