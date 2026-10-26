@@ -23,7 +23,6 @@ requirements:
     - python
     - setuptools >=80
     - setuptools_scm >=8
-    - setuptools-scm >=8
   run:
     - python
 
